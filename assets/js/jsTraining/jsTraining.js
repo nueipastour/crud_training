@@ -95,18 +95,44 @@
         */
     var _initialize = function() {
       console.log('_initialize');
-      // 讀取tag:h1內容字串
-      var text = $('h1').text();
-      // 在DevTools的console介面中印出
-      console.log('----');
-      console.log('tag:h1的內容為：' + text);
-      console.log('----');
-      // 寫入「測試字串」至id="ctrl-message"的元件
-      $('#ctrl-message').text('測試字串');
-      // 變更class="ctrl-btn"按鈕的元件的顏色為btn-danger
-      $('.ctrl-btn').removeClass('btn-warning').addClass('btn-danger');
+      // 移除按鈕
+      $('.ctrl-btn').remove();
+      /**
+ * 建立表格
+ */
+      // 建立變數
+      var tmp, table, thead, tbody, tr, th, td;
+      // 建立暫存容器
+      tmp = $('<div></div>');
+      // 建立thead區塊資料，並放到tmp之中
+      thead = $('<thead></thead>').appendTo(tmp);
+      // 建立tr標籤，並放到thead之中
+      tr = $('<tr></tr>').appendTo(thead);
+      // 建立th標籤，並放到tr之中
+      th = $('<th></th>').appendTo(tr);
+      // 寫入th內容文字
+      th.text('Count');
+      th = $('<th></th>').appendTo(tr);
+      th.text('Name');
+      th = $('<th>Gender</th>').appendTo(tr);
 
-      
+      // 建立tbody區塊資料
+      tbody = $('<tbody></tbody>').appendTo(tmp);
+      tr = $('<tr></tr>').appendTo(tbody);
+      td = $('<td></td>').appendTo(tr);
+      td.text('1');
+      td = $('<td></td>').appendTo(tr);
+      td.text('Joe');
+      td = $('<td>male</td>').appendTo(tr);
+
+      // 取得table元件
+      table = $('.ctrl-table');
+      // 將暫存容器內容移至table元件
+      tmp.children().appendTo(table);
+
+      // 印出table元件HTML碼
+      console.log(table.html());
+
       /**
           * 事件綁定
           */
