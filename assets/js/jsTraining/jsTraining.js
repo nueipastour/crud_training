@@ -51,8 +51,7 @@
 
     // AJAX URL
     _ajaxUrls: {
-      list: '/controller_group_forder/controller/ajax',
-      edit: '/controller_group_forder/controller_edit/ajax',
+      accountApi: '/js_training/ajax',
     },
   };
 
@@ -137,7 +136,61 @@
 
       // 印出table元件HTML碼
       console.log(table.html());
+      /**
+ * 讀取全部
+ */
+      $.ajax({
+        method: 'GET',
+        url: self._ajaxUrls.accountApi,
+        dataType: 'json',
+      }).done(function(data) {
+        // 處理回傳資料 - 印出json字串
+        $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
 
+        /**
+   * 陣列資料配合$.each建立表格
+   */
+        // 建立變數
+        var tmp, table, thead, tbody, tr, th, td;
+        // 建立暫存容器
+        tmp = $('<div></div>');
+        // 建立thead區塊資料
+        thead = $('<thead></thead>').appendTo(tmp);
+        // 建立tbody區塊資料
+        tbody = $('<tbody></tbody>').appendTo(tmp);
+
+        // 建立標題
+        tr = $('<tr class="bg-info"></tr>').appendTo(thead);
+        $.each(data.head, function(index, value) {
+          th = $('<th>' + value + '</th>').appendTo(tr);
+        });
+
+        // 建立內容
+        $.each(data.data, function(index1, value1) {
+          tr = $('<tr></tr>').appendTo(tbody);
+          $.each(value1, function(index2, value2) {
+            td = $('<td>' + value2 + '</td>').appendTo(tr);
+          });
+        });
+
+        // 取得table元件
+        table = $('.ctrl-table');
+        // 將暫存容器內容移至table元件
+        tmp.children().appendTo(table);
+      });
+
+      /**
+      * 更新一筆
+      */
+      $.ajax({
+        method: 'PUT',
+        url: self._ajaxUrls.accountApi,
+        data: { name: 'John', location: 'Boston' },
+        dataType: 'json',
+      }).done(function(data) {
+        // 處理回傳資料
+        $('<div>' + JSON.stringify(data) + '</div>').appendTo($('.ctrl-message'));
+      });
       /**
           * 事件綁定
           */
