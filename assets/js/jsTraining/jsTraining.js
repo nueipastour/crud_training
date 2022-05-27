@@ -96,7 +96,12 @@
     var _initialize = function() {
       console.log('_initialize');
       // 移除按鈕
-      $('.ctrl-btn').remove();
+      // $('.ctrl-btn').remove();
+
+      // 按下按鈕時，變更tag:h1文字為「** Javascript Training **」
+      $('.ctrl-btn').on('click', function() {
+        $('h1').text('** Javascript Training **');
+      });
       /**
  * 建立表格
  */
@@ -144,7 +149,16 @@
         */
     var _evenBind = function() {
       console.log('_evenBind');
-
+      // 偵測滑鼠座標
+      $(document).on('mousemove', function(ev) {
+        // 取得事件物件
+        ev = ev || window.event;
+        // 如果事件物件含有座標資訊
+        if (ev.pageX || ev.pageY) {
+          // 在ctrl-message元件中印出座標資訊
+          $('.ctrl-message').html('X: ' + ev.pageX + '<br>Y: ' + ev.pageY);
+        }
+      });
       /**
           * 事件 - 增加
           */
