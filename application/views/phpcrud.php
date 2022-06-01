@@ -19,7 +19,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 <style>
     body {
-        background: url(https://picsum.photos/2000/1000);
+        /* background: url(https://picsum.photos/2000/1000); */
+        background: gray;
     }
 
     .change {
@@ -62,7 +63,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     .form-control {
         display: block;
-        width: 100%;
+        width: 50%;
         padding: 10px 10px;
         font-size: 16px;
         line-height: 1.5;
@@ -114,39 +115,33 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         <form action="form-body">
             <div class="form-group">
-                <label for="email"><i class="far fa-envelope">Email</i></label>
+                <label for="email"><i class="far fa-envelope">帳號</i></label>
                 <input type="text" name="email" id="email">
             </div>
             <div class="form-group">
-                <label for="username"><i class="fas fa-address-card">User&ensp;</i></label>
+                <label for="username"><i class="fas fa-address-card">姓名</i></label>
                 <input type="text" name="username" id="username">
             </div>
             <div class="form-group">
-                <label for="Expertise"><i class="fas fa-paperclip"></i>Expertise</label>
-                <input type="checkbox" id="vehicle1" name="skill" value="html">
-                <label for="vehicle1">HTML</label>
-            </div>
-
-
-            <div class="form-group">
-                <p class="move"><input type="checkbox" id="vehicle2" name="skill" value="CSS">
-                    <label for="vehicle2">CSS</label>
-                </p>
-            </div>
-
-            <div class="form-group">
-                <p class="move2"><input type="checkbox" id="vehicle3" name="skill" value="JS">
-                    <label for="vehicle2">Javascrip</label>
-                </p>
-            </div>
-
-
-            <div class="form-group">
-                <p class="p"><label for="comment"><i class="far fa-calendar">Message</i></label></p>
-                <p class="change"><textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="請輸入留言"></textarea></p>
+                <label for="Expertise"><i class="fas fa-paperclip"></i>性別</label>
+                <input type="radio">男性</button>
+                <input type="radio">女性</button>
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-outline-light"><i class="fas fa-paper-plane">SEND</i></button>
+                <label for="email"><i class="far fa-envelope">生日</i></label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="far fa-envelope">信箱</i></label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="comment"><i class="far fa-calendar">備註</i></label>
+                <input type="text" name="remark" id="remark">
+            </div>
+            <div class="form-group" style="display:flex;justify-content:end;">
+                <button type="reset" class="btn btn-outline-light" style="margin-right:20px"><i class="fas fa-paper-plane">RESERT</i></button>
+                <button type="button" class="btn btn-outline-light"style="margin-right:20px"><i class="fas fa-paper-plane">SEND</i></button>
             </div>
         </form>
     </div>
